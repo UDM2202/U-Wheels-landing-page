@@ -1,0 +1,579 @@
+/* Import Tailwind v4 */
+@import 'tailwindcss' source(".");
+
+/* Theme variables - Light mode */
+:root {
+  /* Your exact logo colors */
+  --logo-burgundy: #841326;
+  --logo-light-blue: #DBE6F8;
+  --logo-gray-blue: #8591A4;
+  
+  /* Derived colors for the site */
+  --accent-primary: #841326;
+  --accent-secondary: #8591A4;
+  --accent-light: #DBE6F8;
+  
+  /* Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fc;
+  
+  /* Text colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  
+  /* UI Elements */
+  --border-color: #e0e5ed;
+  --card-bg: #ffffff;
+  --card-border: #e0e5ed;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --footer-bg: #f0f3f9;
+  
+  /* Gradients using your colors */
+  --gradient-primary: linear-gradient(135deg, #841326, #a01e32);
+  --gradient-secondary: linear-gradient(135deg, #8591A4, #5a687c);
+  --gradient-accent: linear-gradient(135deg, #DBE6F8, #8591A4);
+  --gradient-logo: linear-gradient(135deg, #841326, #8591A4);
+}
+
+/* Dark mode - based on your colors */
+.dark {
+  --accent-primary: #b31e3a;
+  --accent-secondary: #9aabc2;
+  --accent-light: #4a5a74;
+  
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #DBE6F8;
+  
+  --border-color: #333333;
+  --card-bg: #2d2d2d;
+  --card-border: #404040;
+  --nav-bg: rgba(26, 26, 26, 0.9);
+  --footer-bg: #1f1f1f;
+  
+  --gradient-primary: linear-gradient(135deg, #b31e3a, #841326);
+  --gradient-secondary: linear-gradient(135deg, #9aabc2, #5a687c);
+  --gradient-accent: linear-gradient(135deg, #4a5a74, #2a3a4a);
+  --gradient-logo: linear-gradient(135deg, #b31e3a, #9aabc2);
+}
+
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Custom theme - Tailwind v4 style */
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Poppins', system-ui, sans-serif;
+
+  --animate-gradient: gradient 8s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite;
+  --animate-pulse-slow: pulse 3s ease-in-out infinite;
+
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes glow {
+    0%, 100% { opacity: 1; filter: brightness(1); }
+    50% { opacity: 0.8; filter: brightness(1.2); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+}
+
+/* Base styles */
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+  
+  ::selection {
+    background-color: var(--accent-primary);
+    color: white;
+  }
+}
+
+/* Container */
+@layer components {
+  .container-custom {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .container-custom {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container-custom {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}
+
+/* Text Gradients */
+@layer components {
+  .gradient-text {
+    background: var(--gradient-logo);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: gradient 4s linear infinite;
+  }
+  
+  .gradient-text-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .gradient-text-secondary {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Background Gradients */
+@layer components {
+  .gradient-bg {
+    background: var(--gradient-primary);
+    transition: background 0.3s;
+  }
+  
+  .gradient-bg-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-bg-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .gradient-bg-logo {
+    background: var(--gradient-logo);
+  }
+}
+
+/* Glass Effect */
+@layer components {
+  .glass-effect {
+    backdrop-filter: blur(12px);
+    background: var(--nav-bg);
+    border: 1px solid var(--border-color);
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Cards */
+@layer components {
+  .card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 1rem;
+    transition: all 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 20px 25px -5px rgba(132, 19, 38, 0.1), 0 10px 10px -5px rgba(132, 19, 38, 0.04);
+  }
+  
+  .car-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid var(--accent-primary);
+    transition: all 0.3s;
+  }
+  
+  .car-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 25px 30px -10px rgba(132, 19, 38, 0.2);
+  }
+  
+  .car-image-container {
+    position: relative;
+    overflow: hidden;
+    height: 16rem;
+  }
+  
+  .car-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s;
+  }
+  
+  .group:hover .car-image {
+    transform: scale(1.1);
+  }
+  
+  .car-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--accent-primary), transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  .group:hover .car-overlay {
+    opacity: 0.3;
+  }
+}
+
+/* Buttons */
+@layer components {
+  .btn-primary {
+    padding: 0.75rem 2rem;
+    background: var(--accent-primary);
+    color: white;
+    font-weight: 600;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background: #a01e32;
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px -5px rgba(132, 19, 38, 0.3);
+  }
+  
+  .btn-primary:active {
+    transform: scale(0.95);
+  }
+  
+  .btn-secondary {
+    padding: 0.75rem 2rem;
+    background: var(--accent-secondary);
+    color: white;
+    font-weight: 600;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-secondary:hover {
+    background: #9aabc2;
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px -5px rgba(133, 145, 164, 0.3);
+  }
+  
+  .btn-outline {
+    padding: 0.75rem 2rem;
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .btn-outline:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+  
+  .btn-outline-light {
+    padding: 0.75rem 2rem;
+    border: 2px solid var(--accent-light);
+    color: var(--accent-light);
+    font-weight: 600;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    background: transparent;
+  }
+  
+  .btn-outline-light:hover {
+    background: var(--accent-light);
+    color: var(--accent-primary);
+  }
+}
+
+/* Badges and Tags */
+@layer components {
+  .price-tag {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    display: inline-block;
+  }
+  
+  .feature-badge {
+    background: var(--accent-light);
+    color: var(--accent-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .car-spec {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+  
+  .car-spec svg {
+    color: var(--accent-primary);
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+/* Borders and Accents */
+@layer components {
+  .accent-border {
+    border-color: var(--accent-primary);
+  }
+  
+  .accent-border-bottom {
+    border-bottom: 2px solid var(--accent-primary);
+  }
+  
+  .accent-border-left {
+    border-left: 3px solid var(--accent-primary);
+  }
+  
+  .accent-bg-primary {
+    background-color: var(--accent-primary);
+  }
+  
+  .accent-bg-secondary {
+    background-color: var(--accent-secondary);
+  }
+  
+  .accent-bg-light {
+    background-color: var(--accent-light);
+  }
+  
+  .accent-text {
+    color: var(--accent-primary);
+  }
+  
+  .accent-text-secondary {
+    color: var(--accent-secondary);
+  }
+  
+  .accent-text-light {
+    color: var(--accent-light);
+  }
+}
+
+/* Navigation */
+@layer components {
+  .nav-link {
+    position: relative;
+    color: var(--text-primary);
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: var(--accent-primary);
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: width 0.3s;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .nav-link-active {
+    color: var(--accent-primary);
+  }
+  
+  .nav-link-active::after {
+    width: 100%;
+  }
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  background: linear-gradient(to right, var(--accent-light), var(--accent-secondary));
+  cursor: pointer;
+  border: none;
+  overflow: hidden;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.3s;
+}
+
+.dark .theme-toggle-thumb {
+  transform: translateX(30px);
+}
+
+/* Loading animation colors */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--accent-light);
+  border-bottom-color: var(--accent-primary);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Custom scrollbar with your colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #a01e32, #9aabc2);
+}
+
+/* Section dividers */
+.section-divider {
+  width: 100px;
+  height: 3px;
+  background: var(--gradient-primary);
+  margin: 2rem auto;
+  border-radius: 3px;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s;
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.5rem);
+}
+
+.hover-glow {
+  transition: all 0.3s;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(132, 19, 38, 0.3);
+}
+
+.hover-scale {
+  transition: transform 0.3s;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Form elements */
+.input-field {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(132, 19, 38, 0.1);
+}
+
+/* Footer */
+.footer-link {
+  color: var(--text-secondary);
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: var(--accent-primary);
+}
+
+/* Social media icons */
+.social-icon {
+  color: var(--text-secondary);
+  transition: all 0.3s;
+}
+
+.social-icon:hover {
+  color: var(--accent-primary);
+  transform: translateY(-3px);
+}
