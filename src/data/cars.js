@@ -145,7 +145,11 @@ export const cars = [
       "/images/cars/Lambo/LAMBO F2.jpeg",
       "/images/cars/Lambo/LAMBO R2.jpeg",
       "/images/cars/Lambo/LAMBO W1.jpeg",
-      "/images/cars/Lambo/LAMBO W2.jpeg"
+      "/images/cars/Lambo/LAMBO W2.jpeg",
+      "/images/cars/Lambo/LAMBO IN2.jpeg",
+      "/images/cars/Lambo/LAMBO Out2.jpeg",
+      "/images/cars/Lambo/LAMBO bonnet.jpeg",
+      "/images/cars/Lambo/LAMBO DB.jpeg"
     ],
     features: ["V10 Engine", "All-Wheel Drive", "Rosso Mars Red", "Alcantara Interior", "Supercar Performance"],
     color: "Red (Rosso Mars)",
