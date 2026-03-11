@@ -162,7 +162,7 @@ const Footer = () => {
             </ul>
 
             {/* Social Links */}
-            <div className="mt-6">
+            {/* <div className="mt-6">
               <h4 className="text-sm font-medium mb-3 text-[var(--text-secondary)]">Follow Us</h4>
               <div className="flex gap-3">
                 {socialLinks.map((social) => {
@@ -181,7 +181,7 @@ const Footer = () => {
                   );
                 })}
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
 
@@ -194,10 +194,7 @@ const Footer = () => {
         >
           {/* Copyright */}
           <p className="text-sm text-[var(--text-secondary)] text-center md:text-left">
-            © {new Date().getFullYear()} U-Wheels. All rights reserved. | 
-            <span className="mx-2">Designed with</span>
-            <Heart size={14} className="inline text-red-500 mx-1" />
-            <span>for car lovers</span>
+            © {new Date().getFullYear()} U-Wheels. All rights reserved.
           </p>
 
           {/* Back to Top Button */}

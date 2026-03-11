@@ -336,14 +336,16 @@
 
 /* Badges and Tags */
 @layer components {
-  .price-tag {
-    background: var(--gradient-primary);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    display: inline-block;
-  }
+ .price-tag {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.35rem 0.75rem; 
+  border-radius: 9999px;
+  font-weight: 600;
+  display: inline-block;
+  font-size: 0.9rem; 
+  white-space: nowrap; 
+}
   
   .feature-badge {
     background: var(--accent-light);
@@ -354,19 +356,19 @@
     font-weight: 500;
   }
   
-  .car-spec {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-  }
-  
-  .car-spec svg {
-    color: var(--accent-primary);
-    width: 1.25rem;
-    height: 1.25rem;
-  }
+ .car-spec {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; 
+  color: var(--text-secondary);
+  font-size: 0.75rem; 
+}
+
+.car-spec svg {
+  color: var(--accent-primary);
+  width: 0.875rem; 
+  height: 0.875rem;
+}
 }
 
 /* Borders and Accents */
